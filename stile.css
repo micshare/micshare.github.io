@@ -1,0 +1,63 @@
+/* Colori e misure come in docs/DESIGN.md */
+@font-face { font-family: "Bricolage Grotesque"; src: url("fonts/BricolageGrotesque.ttf") format("truetype"); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: "Instrument Sans"; src: url("fonts/InstrumentSans.ttf") format("truetype"); font-weight: 400 700; font-display: swap; }
+
+:root {
+  --bg: #F3F5F7; --surface: #FFFFFF; --surface2: #E9EDF1; --line: #D9DFE5;
+  --ink: #0E141B; --ink2: #4A5562; --ink3: #66717E; --accent: #2457E6; --accent-soft: #DCE5FB;
+  --panel: #2347E0;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0D1116; --surface: #151A21; --surface2: #1E252E; --line: #2A323C;
+    --ink: #EEF2F6; --ink2: #A9B3BF; --ink3: #8B96A3; --accent: #6E95FF; --accent-soft: #1D2A52;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.55 "Instrument Sans", system-ui, sans-serif;
+}
+main { max-width: 680px; margin: 0 auto; padding: 20px 16px 40px; }
+a { color: var(--accent); }
+h1, h2, h3, .logo { font-family: "Bricolage Grotesque", system-ui, sans-serif; line-height: 1.15; }
+main > h1 { font-size: 32px; font-weight: 800; margin: 8px 0 4px; }
+h2 { font-size: 22px; font-weight: 750; margin: 0 0 12px; }
+h3 { font-size: 17px; font-weight: 700; margin: 22px 0 6px; }
+p { margin: 0 0 12px; }
+code { background: var(--surface2); border-radius: 6px; padding: 1px 6px; font-size: 14px; overflow-wrap: anywhere; }
+
+header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+header img { width: 36px; height: 36px; border-radius: 10px; }
+.logo { font-size: 24px; font-weight: 800; color: var(--ink); text-decoration: none; }
+header nav { margin-left: auto; display: flex; gap: 14px; font-size: 14px; }
+
+.panel {
+  background: var(--panel); color: #fff; border-radius: 28px; padding: 28px 24px;
+  background-image: radial-gradient(circle at 100% 0, rgba(255,255,255,.14) 0 90px, transparent 91px),
+                    radial-gradient(circle at 100% 0, rgba(255,255,255,.08) 0 160px, transparent 161px);
+}
+.panel h1 { font-size: clamp(32px, 7vw, 44px); font-weight: 800; margin: 0 0 10px; }
+.panel p { color: #DCE5FB; max-width: 34em; }
+.panel p a { color: #fff; }
+.download {
+  display: inline-block; margin-top: 10px; background: #fff; color: #173FAF; font-weight: 700;
+  text-decoration: none; border-radius: 16px; padding: 14px 22px; font-size: 17px;
+}
+.download:focus-visible, .download:hover { outline: 3px solid #DCE5FB; outline-offset: 2px; }
+.note { font-size: 14px; margin-top: 12px; }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; margin-top: 16px; }
+.card ol { margin: 0; padding-left: 22px; }
+.card li { margin-bottom: 10px; }
+.card li:last-child { margin-bottom: 0; }
+.secondary { color: var(--ink2); font-size: 14px; }
+footer { color: var(--ink3); font-size: 13px; margin-top: 24px; }
+footer p { margin-bottom: 6px; }
+
+/* Lingua scelta da lingua.js; senza script si vedono tutte e due. */
+html.scelta:not(.en) [lang="en"], html.scelta.en [lang="it"] { display: none; }
+.lang { background: none; border: 0; color: var(--accent); font: inherit; cursor: pointer; padding: 0; text-decoration: underline; }
